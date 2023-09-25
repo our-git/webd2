@@ -1,0 +1,64 @@
+<html>
+<head>
+</head>
+<body>
+<center>
+<p id="demo"/>
+</center>
+<script>
+var var1=setInterval(inTimer,1000);
+var size=5;
+var ids=document.getElementById("demo");
+function inTimer(){
+size+=5;
+ids.innerHTML="TEXT GROWING";
+ids.setAttribute("style","font-size:"+size+"px; color:red");
+if(size>=50)
+{
+clearInterval(var1);
+var var2=setInterval(deTimer,1000);
+}
+}
+function deTimer(){
+size-=5;
+ids.innerHTML="TEXT SHRINKING";
+ids.setAttribute("style","font-size:"+size+"px; color:blue");
+if(size<=5)
+{
+clearInterval(var1);
+}
+}
+</script>
+</body>
+</html>
+(Or)
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+ #text {
+ font-size: 16px;
+ transition: font-size 0.5s;
+ }
+ </style>
+</head>
+<body>
+ <button onclick="growText()">Grow</button>
+ <button onclick="shrinkText()">Shrink</button>
+ <p id="text">Hello, world!</p>
+ <script>
+ function growText() {
+ var text = document.getElementById("text");
+ var currentSize = parseInt(window.getComputedStyle(text).fontSize);
+ var newSize = currentSize + 2;
+ text.style.fontSize = newSize + "px";
+ }
+ function shrinkText() {
+ var text = document.getElementById("text");
+ var currentSize = parseInt(window.getComputedStyle(text).fontSize);
+ var newSize = currentSize - 2;
+ text.style.fontSize = newSize + "px";
+ }
+ </script>
+</body>
+</html>
